@@ -1,5 +1,6 @@
 <p align="center">
-<a href="https://dougfinke.visualstudio.com/PSProse/_build?definitionId=10"><img src="https://dougfinke.visualstudio.com/PSProse/_apis/build/status/ImportExcel-CI?branchName=master"></a>
+<a href="https://ci.appveyor.com/project/dfinke/PSProse/branch/master"><img src="https://ci.appveyor.com/api/projects/status/7140phf2ecno2y5c/branch/master?svg=true"></a>
+<!-- <a href="https://dougfinke.visualstudio.com/PSProse/_build?definitionId=10"><img src="https://dougfinke.visualstudio.com/PSProse/_apis/build/status/ImportExcel-CI?branchName=master"></a> -->
 </p>
 
 # PSProse
