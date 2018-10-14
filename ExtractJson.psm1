@@ -15,8 +15,6 @@ function Get-JSONData {
     $noJoinSession.Inputs.Add($jsonText)
     $noJoinProgram = $noJoinSession.Learn()
     $table = $noJoinProgram.Run($jsonText)
-    # $noJoinProgram.Run($jsonText)
-
 
     foreach ($row in $table) {$row -join ', '}
 }
