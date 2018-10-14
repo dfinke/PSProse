@@ -1,3 +1,7 @@
+<p align="center">
+<a href="https://dougfinke.visualstudio.com/PSProse/_build?definitionId=10"><img src="https://dougfinke.visualstudio.com/PSProse/_apis/build/status/ImportExcel-CI?branchName=master"></a>
+</p>
+
 # PSProse
 
 PowerShell module for the Microsoft Program Synthesis SDK https://github.com/Microsoft/prose
