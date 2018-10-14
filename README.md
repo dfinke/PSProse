@@ -1,6 +1,6 @@
 # PSProse
 
-PowerShell module for Microsoft Program Synthesis SDK https://github.com/Microsoft/prose
+PowerShell module for the Microsoft Program Synthesis SDK https://github.com/Microsoft/prose
 
 ## Microsoft Program Synthesis
 
