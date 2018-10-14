@@ -1,17 +1,17 @@
 <p align="center">
 <a href="https://ci.appveyor.com/project/dfinke/PSProse/branch/master"><img src="https://ci.appveyor.com/api/projects/status/7140phf2ecno2y5c/branch/master?svg=true"></a>
-<!-- <a href="https://dougfinke.visualstudio.com/PSProse/_build?definitionId=10"><img src="https://dougfinke.visualstudio.com/PSProse/_apis/build/status/ImportExcel-CI?branchName=master"></a> -->
+<a href="https://dougfinke.visualstudio.com/PSProse/_build"><img src="https://dougfinke.visualstudio.com/PSProse/_apis/build/status/PSProse-CI?branchName=master"></a>
 </p>
 
 # PSProse
 
 PowerShell module for the Microsoft Program Synthesis SDK https://github.com/Microsoft/prose
 
-Prose is the Micorsoft open source of the example-driven parsing based on the [FlashExtract](https://www.microsoft.com/en-us/research/publication/flashextract-framework-data-extraction-examples/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fsumitg%2Fflashextract.html), [research work by Microsoft Research](https://www.microsoft.com/en-us/research/publication/flashextract-framework-data-extraction-examples/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fsumitg%2Fflashextract.html).
+Prose is the Microsoft open source of the example-driven parsing based on the [FlashExtract](https://www.microsoft.com/en-us/research/publication/flashextract-framework-data-extraction-examples/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fsumitg%2Fflashextract.html), [research work by Microsoft Research](https://www.microsoft.com/en-us/research/publication/flashextract-framework-data-extraction-examples/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fsumitg%2Fflashextract.html).
 
 The `ConvertFrom-String` cmdlet in Windows PowerShell used it to power  example-driven parsing. It was not ported to PowerShell Core.
 
-Prose is dotnet, cross platform and has new features.
+Prose is written using dotnet core, is cross platform and has new features.
 
 
 ## Microsoft Program Synthesis
