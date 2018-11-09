@@ -4,7 +4,7 @@
     RootModule        = 'PSProse.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '1.0.0'
+    ModuleVersion     = '1.0.1'
 
     # ID used to uniquely identify this module
     GUID              = '2e517186-c120-403d-82ca-7acff95ea686'
@@ -20,8 +20,7 @@
 
     # Description of the functionality provided by this module
     Description       = @'
-PowerShell module to import/export Excel spreadsheets, without Excel.
-Check out the How To Videos https://www.youtube.com/watch?v=U3Ne_yX4tYo&list=PL5uoqS92stXioZw-u-ze_NtvSo0k0K0kq
+PowerShell module example-driven parsing using the Microsoft Program Synthesis SDK
 '@
 
     # Minimum version of the Windows PowerShell engine required by this module
@@ -86,7 +85,7 @@ Check out the How To Videos https://www.youtube.com/watch?v=U3Ne_yX4tYo&list=PL5
         # https://connect.microsoft.com/PowerShell/feedback/details/421837
         PSData = @{
             # The primary categorization of this module (from the TechNet Gallery tech tree).
-            Category     = "Scripting Excel"
+            Category     = "PowerShell Parsing"
 
             # Keyword tags to help users find this module via navigations and search.
             Tags         = @("Prose", "PowerShell", "Parse", "ByExample")
