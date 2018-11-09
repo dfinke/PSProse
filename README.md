@@ -7,7 +7,9 @@
 
 PowerShell module for the Microsoft Program Synthesis SDK https://github.com/Microsoft/prose
 
-Prose is the Microsoft open source of the example-driven parsing based on the [FlashExtract](https://www.microsoft.com/en-us/research/publication/flashextract-framework-data-extraction-examples/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fsumitg%2Fflashextract.html), [research work by Microsoft Research](https://www.microsoft.com/en-us/research/publication/flashextract-framework-data-extraction-examples/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fsumitg%2Fflashextract.html).
+Microsoft PROSE SDK for .Net is available publicly in binary form for non-commercial use only.
+
+Prose is the example-driven parsing based on the [FlashExtract](https://www.microsoft.com/en-us/research/publication/flashextract-framework-data-extraction-examples/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fsumitg%2Fflashextract.html), [research work by Microsoft Research](https://www.microsoft.com/en-us/research/publication/flashextract-framework-data-extraction-examples/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fsumitg%2Fflashextract.html).
 
 The `ConvertFrom-String` cmdlet in Windows PowerShell used it to power  example-driven parsing. It was not ported to PowerShell Core.
 
