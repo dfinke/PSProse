@@ -3,13 +3,11 @@
         [Parameter(Mandatory)]
         $File,
         [string[]]$Header,
-        [string[]]$Constraints
+        [System.Collections.Specialized.OrderedDictionary]$Constraints
     )
 
-    # Import-Module ..\PSProse.psm1 -Force
-
     function new-splitsession {
-        new-object microsoft.programsynthesis.split.text.splitsession $null, $null, $null
+        new-object Microsoft.ProgramSynthesis.Split.Text.SplitSession $null, $null, $null
     }
 
     function new-datainput {
@@ -19,22 +17,26 @@
         )
 
         process {
-            [microsoft.programsynthesis.split.text.splitsession]::createstringregion($s)
+            [microsoft.programsynthesis.split.text.splitsession]::CreateStringRegion($s)
         }
     }
 
     $splitsession = new-splitsession
 
     $textitems = Get-Content $file | new-datainput
-
     $textitems | ForEach-Object {$splitsession.inputs.add($_)}
 
     $splitsession.constraints.Clear()
     $splitsession.constraints.add((New-Object Microsoft.ProgramSynthesis.Split.Text.IncludeDelimitersInOutput $false))
 
-    for ($idx = 0; $idx -lt $constraints.count; $idx++) {
-        $constraint = New-Object Microsoft.ProgramSynthesis.Split.Text.NthExampleConstraint -ArgumentList $splitsession.inputs[0].Value, $idx, $constraints[$idx]
-        $splitSession.constraints.Add($constraint)
+    foreach ($key in $constraints.Keys) {
+        $entry = $constraints.$key
+
+        for ($idx = 0; $idx -lt $entry.Count; $idx++) {
+            $constraint = New-Object Microsoft.ProgramSynthesis.Split.Text.NthExampleConstraint -ArgumentList $splitsession.inputs.Wholeregion[$key].Value, $idx, $entry[$idx]
+            $splitSession.constraints.Add($constraint)
+        }
+
     }
 
     $program = $splitsession.Learn()
