@@ -56,11 +56,11 @@
         $h = [ordered]@{}
 
         foreach ($columnNumber in 1..$count) {
+            $propertyName = "Col$columnNumber"
             if ($Header) {
-                $propertyName = $Header[$columnNumber - 1]
-            }
-            else {
-                $propertyName = "Col$columnNumber"
+                if ($columnNumber -le $Header.Count) {
+                    $propertyName = $Header[$columnNumber - 1]
+                }
             }
 
             $h.$propertyName = $run[($columnNumber - 1)].CellValue.Value
