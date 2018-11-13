@@ -26,7 +26,7 @@ Find guides for these sample projects here: https://microsoft.github.io/prose/
 
 ![image](images/extractJson.gif)
 
-## In Action
+## UI In Action
 
 Split Text UI
 
