@@ -1,3 +1,3 @@
-Import-Module ..\ExtractJSON.psm1 -Force
+Import-Module ..\PSProse.psm1 -Force
 
 Get-JSONData .\people.json
