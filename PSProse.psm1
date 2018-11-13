@@ -1,5 +1,7 @@
 Get-ChildItem $PSScriptRoot\lib | ForEach-Object {Add-Type -Path $_.FullName}
 
+. $PSScriptRoot\InvokeSplitText.ps1
+
 function New-JSONSession {
     New-Object Microsoft.ProgramSynthesis.Extraction.Json.Session $null, $null, $null
 }
