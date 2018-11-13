@@ -26,6 +26,12 @@ Find guides for these sample projects here: https://microsoft.github.io/prose/
 
 ![image](images/extractJson.gif)
 
+## In Action
+
+Split Text UI
+
+![image](images/SplitTextUI.gif)
+
 ## Contributor Covenant Code of Conduct
 
 Full [Code of Conduct](CODE_OF_CONDUCT.md).
