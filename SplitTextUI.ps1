@@ -11,7 +11,7 @@ $XAML = @'
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStartupLocation="CenterScreen"
-        Title="Split Text Buddy" Height="650" Width="850">
+        Title="Split Text Buddy" Height="850" Width="850">
 
     <Grid>
 
@@ -25,10 +25,12 @@ $XAML = @'
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition Height="250"/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Margin="3">
             <Button x:Name="btnSelectFile" Content=" Select File " Margin="3" Width="Auto" HorizontalAlignment="Left"/>
+            <Button x:Name="btnCopyPowerShell" Content=" Copy PowerShell To Clipboard" Margin="3" Width="Auto" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <GroupBox Header=" File Contents " Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="3">
@@ -67,6 +69,15 @@ $XAML = @'
                 HorizontalScrollBarVisibility="Visible"/>
         </GroupBox>
 
+        <GroupBox Header=" PowerShell " Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="3">
+            <TextBox x:Name="tbPowerShell" Margin="3"
+                IsReadOnly="True"
+                FontFamily="Consolas"
+                FontSize="14"
+                VerticalScrollBarVisibility="Visible"
+                HorizontalScrollBarVisibility="Visible"/>
+        </GroupBox>
+
     </Grid>
 </Window>
 '@
@@ -90,6 +101,19 @@ function DoParse {
 
     try {
         $tbParsedResults.Text = Invoke-SplitText -File $targetFile -Constraints $constraints -Header $headers  | Out-String
+        $tbPowerShell.Text = @"
+`$constraints = [Ordered]@{
+    0 = $("'{0}'" -f $($examples -join ", '"))
+}
+
+`$params = @{
+    File = "$(Resolve-Path $targetFile)"
+    Constraints = `$constraints
+    Header = $("'{0}'" -f $($headers -join ", '"))
+}
+
+Invoke-SplitText @params
+"@
     }
     catch {
 
@@ -100,16 +124,21 @@ $Window = [Windows.Markup.XamlReader]::Load((New-Object System.Xml.XmlNodeReader
 
 $Window.Title = "Split Text Buddy - [$targetFile]"
 
+$btnCopyPowerShell = $Window.FindName("btnCopyPowerShell")
 $tbFileContents = $Window.FindName("tbFileContents")
 $tbExamples = $Window.FindName("tbExamples")
 $tbHeaders = $Window.FindName("tbHeaders")
 $tbParsedResults = $Window.FindName("tbParsedResults")
+$tbPowerShell = $Window.FindName("tbPowerShell")
 
 $tbFileContents.Add_TextChanged( { DoParse })
 $tbExamples.Add_TextChanged( { DoParse })
 $tbHeaders.Add_TextChanged( { DoParse })
 
 $tbFileContents.Text = Get-Content -raw $targetFile
+$btnCopyPowerShell.Add_Click( {
+        $tbPowerShell.Text | Clip
+    })
 
 $null = $tbExamples.Focus()
 [void]$Window.ShowDialog()
