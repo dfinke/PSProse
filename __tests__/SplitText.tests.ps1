@@ -77,4 +77,21 @@ Describe "Test Invoke-SplitText" {
         $actual[1].Last | Should Be "jay lucas"
         $actual[1].Country | Should Be "new zealand"
     }
+
+    It "Handles Different Number of Headers" {
+        $param = @{
+            file   = $file
+            Header = 'ID', 'First'
+        }
+
+        $actual = Invoke-SplitText @param
+
+        $actual.Count | Should Be 3
+
+        $propertyNames = $actual[0].psobject.properties.name
+        $propertyNames[0] | Should Be "ID"
+        $propertyNames[1] | Should Be "First"
+        $propertyNames[2] | Should Be "Col3"
+        $propertyNames[3] | Should Be "Col4"
+    }
 }
