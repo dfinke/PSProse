@@ -85,27 +85,27 @@ $XAML = @'
 
 function DoParse {
 
-    $examples = @()
+    # $examples = @()
     $headers = @()
 
-    foreach ($record in $tbExamples.Text -split "`r`n") {
-        $examples += $record
-    }
+    $constraints = $tbExamples.Text -split "`r`n"
+    # foreach ($record in $tbExamples.Text -split "`r`n") {
+    #     $examples += $record
+    # }
 
     foreach ($record in $tbHeaders.Text -split "`r`n") {
         $headers += $record
     }
 
-    $constraints = [Ordered]@{
-        0 = $examples
-    }
+    # $constraints = [Ordered]@{
+    #     0 = $examples
+    # }
 
     try {
         $tbParsedResults.Text = Invoke-SplitText -File $targetFile -Constraints $constraints -Header $headers | Format-Table | Out-String
+
         $tbPowerShell.Text = @"
-`$constraints = [Ordered]@{
-    0 = $("'{0}'" -f $($examples -join ", '"))
-}
+`$constraints = $("'{0}'" -f ($constraints -join ", '"))
 
 `$params = @{
     File = "$(Resolve-Path $targetFile)"
@@ -139,6 +139,8 @@ $tbHeaders.Add_TextChanged( { DoParse })
 $tbFileContents.Text = Get-Content -raw $targetFile
 $btnCopyPowerShell.Add_Click( {
         $tbPowerShell.Text | Clip
+
+        [System.Windows.MessageBox]::Show("Done", "Copy to Clipboard")
     })
 
 $null = $tbExamples.Focus()
