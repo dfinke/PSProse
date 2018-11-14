@@ -38,29 +38,27 @@ Describe "Test Invoke-SplitText" {
         $param = @{
             file        = $file
             Header      = 'ID', 'First', 'Last', 'Country'
-            Constraints = [ordered]@{
-                0 = 'pe5', 'leonard', 'robledo', 'australia'
-            }
+            Constraints = 'pe5', 'leonard', 'robledo', 'australia'
         }
 
         $actual = Invoke-SplitText @param
 
-        $actual.Count | Should Be 3
+        $actual.Count      | Should Be 3
 
-        $actual[0].ID    | Should Be "pe5"
-        $actual[0].First | Should Be "leonard"
-        $actual[0].Last | Should Be "robledo"
+        $actual[0].ID      | Should Be "pe5"
+        $actual[0].First   | Should Be "leonard"
+        $actual[0].Last    | Should Be "robledo"
         $actual[0].Country | Should Be "australia"
     }
 
     It "Multiple constraints should yield different results" {
+        $c1 = Write-Output pe5 leonard robledo australia
+        $c2 = Write-Output u109 adam 'jay lucas' 'new zealand'
+
         $param = @{
             file        = $file
             Header      = 'ID', 'First', 'Last', 'Country'
-            Constraints = [ordered]@{
-                0 = echo pe5 leonard robledo australia
-                1 = echo u109 adam 'jay lucas' 'new zealand'
-            }
+            Constraints = $c1, $c2
         }
 
         $actual = Invoke-SplitText @param

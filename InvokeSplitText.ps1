@@ -3,7 +3,7 @@
         [Parameter(Mandatory)]
         $File,
         [string[]]$Header,
-        [System.Collections.Specialized.OrderedDictionary]$Constraints
+        $Constraints
     )
 
     function new-splitsession {
@@ -29,14 +29,40 @@
     $splitsession.constraints.Clear()
     $splitsession.constraints.add((New-Object Microsoft.ProgramSynthesis.Split.Text.IncludeDelimitersInOutput $false))
 
-    foreach ($key in $constraints.Keys) {
-        $entry = $constraints.$key
+    # foreach ($key in $constraints.Keys) {
+    #     $entry = $constraints.$key
 
-        for ($idx = 0; $idx -lt $entry.Count; $idx++) {
-            $constraint = New-Object Microsoft.ProgramSynthesis.Split.Text.NthExampleConstraint -ArgumentList $splitsession.inputs.Wholeregion[$key].Value, $idx, $entry[$idx]
-            $splitSession.constraints.Add($constraint)
+    #     for ($idx = 0; $idx -lt $entry.Count; $idx++) {
+    #         $constraint = New-Object Microsoft.ProgramSynthesis.Split.Text.NthExampleConstraint -ArgumentList $splitsession.inputs.Wholeregion[$key].Value, $idx, $entry[$idx]
+    #         $splitSession.constraints.Add($constraint)
+    #     }
+    # }
+
+    function Add-ProseConstraint {
+        param(
+            $index,
+            $itemIndex,
+            $value
+        )
+
+        $constraint = New-Object Microsoft.ProgramSynthesis.Split.Text.NthExampleConstraint -ArgumentList $splitsession.inputs.Wholeregion[$index].Value, $itemIndex, $value
+
+        $splitSession.constraints.Add($constraint)
+    }
+
+    # Normalize constraints
+    if ($Constraints -and $Constraints[0] -isnot [array]) {
+        for ($idx = 0; $idx -lt $Constraints.Count; $idx++) {
+            Add-ProseConstraint 0 $idx $Constraints[$idx]
         }
-
+    }
+    else {
+        for ($idx = 0; $idx -lt $Constraints.Count; $idx++) {
+            $currentConstraint = $Constraints[$idx]
+            for ($itemIdx = 0; $itemIdx -lt $currentConstraint.Count; $itemIdx++) {
+                Add-ProseConstraint  $idx $itemIdx $currentConstraint[$itemIdx]
+            }
+        }
     }
 
     $program = $splitsession.Learn()
