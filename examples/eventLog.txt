@@ -1,0 +1,15 @@
+36774 Nov 13 20:06 Information  ESENT                                   916 svchost (4360,G,98) The beta feature Ese
+36773 Nov 13 19:05 Information  ESENT                                   916 svchost (4360,G,98) The beta feature Ese
+36772 Nov 13 18:08 Information  ESENT                                   916 SettingSyncHost (8952,G,98) The beta fea
+36771 Nov 13 18:04 Information  ESENT                                   916 svchost (4360,G,98) The beta feature Ese
+36770 Nov 13 17:47 SuccessAudit Git Credential Manager                    0 GitHub credentials for 'https://github.c
+36769 Nov 13 17:45 SuccessAudit Git Credential Manager                    0 GitHub credentials for 'https://github.c
+36768 Nov 13 17:40 SuccessAudit Git Credential Manager                    0 GitHub credentials for 'https://github.c
+36767 Nov 13 17:39 SuccessAudit Git Credential Manager                    0 GitHub credentials for 'https://github.c
+36766 Nov 13 17:37 SuccessAudit Git Credential Manager                    0 GitHub credentials for 'https://github.c
+36765 Nov 13 17:33 SuccessAudit Git Credential Manager                    0 GitHub credentials for 'https://github.c
+36764 Nov 13 17:30 SuccessAudit Git Credential Manager                    0 GitHub credentials for 'https://github.c
+36763 Nov 13 17:29 Information  ESENT                                   916 DllHost (10224,G,98) The beta feature Es
+36762 Nov 13 17:05 Information  VSS                                    8224 The VSS service is shutting down due to
+36761 Nov 13 17:04 Information  Microsoft-Windows-System-Restore       8302 Scoping successfully completed for shado
+36760 Nov 13 17:04 Information  Microsoft-Windows-System-Restore       8301 Scoping completed for shadowcopy \\?\GLO
