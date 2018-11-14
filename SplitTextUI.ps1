@@ -35,9 +35,10 @@ $XAML = @'
 
         <GroupBox Header=" File Contents " Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="3">
             <TextBox x:Name="tbFileContents" Margin="3"
-                IsReadOnly="True"
                 FontFamily="Consolas"
                 FontSize="14"
+                AcceptsReturn="True"
+                AcceptsTab="True"
                 VerticalScrollBarVisibility="Visible"
                 HorizontalScrollBarVisibility="Visible"/>
         </GroupBox>
@@ -100,7 +101,7 @@ function DoParse {
     }
 
     try {
-        $tbParsedResults.Text = Invoke-SplitText -File $targetFile -Constraints $constraints -Header $headers  | Out-String
+        $tbParsedResults.Text = Invoke-SplitText -File $targetFile -Constraints $constraints -Header $headers | Format-Table | Out-String
         $tbPowerShell.Text = @"
 `$constraints = [Ordered]@{
     0 = $("'{0}'" -f $($examples -join ", '"))
@@ -131,7 +132,7 @@ $tbHeaders = $Window.FindName("tbHeaders")
 $tbParsedResults = $Window.FindName("tbParsedResults")
 $tbPowerShell = $Window.FindName("tbPowerShell")
 
-$tbFileContents.Add_TextChanged( { DoParse })
+$tbFileContents.Add_TextChanged( { DoParse } )
 $tbExamples.Add_TextChanged( { DoParse })
 $tbHeaders.Add_TextChanged( { DoParse })
 
