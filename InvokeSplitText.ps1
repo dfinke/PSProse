@@ -29,15 +29,6 @@
     $splitsession.constraints.Clear()
     $splitsession.constraints.add((New-Object Microsoft.ProgramSynthesis.Split.Text.IncludeDelimitersInOutput $false))
 
-    # foreach ($key in $constraints.Keys) {
-    #     $entry = $constraints.$key
-
-    #     for ($idx = 0; $idx -lt $entry.Count; $idx++) {
-    #         $constraint = New-Object Microsoft.ProgramSynthesis.Split.Text.NthExampleConstraint -ArgumentList $splitsession.inputs.Wholeregion[$key].Value, $idx, $entry[$idx]
-    #         $splitSession.constraints.Add($constraint)
-    #     }
-    # }
-
     function Add-ProseConstraint {
         param(
             $index,
