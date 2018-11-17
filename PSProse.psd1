@@ -4,7 +4,7 @@
     RootModule        = 'PSProse.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '1.0.1'
+    ModuleVersion     = '1.1.0'
 
     # ID used to uniquely identify this module
     GUID              = '2e517186-c120-403d-82ca-7acff95ea686'
