@@ -22,6 +22,12 @@ The Program Synthesis using Examples (PROSE) SDK includes a set of technologies 
 
 Find guides for these sample projects here: https://microsoft.github.io/prose/
 
+## Parse By Example
+
+In this example, pass in the the file to be split, and an array of values in the `Constraints` parameter, which becomes the example used to parse the file and split the text. You can see the results in the bottom pane. Notice the property names. There is a `Headers` parameter that can be used to customize those.
+
+![image](images/SimpleParse.png)
+
 ## In Action
 
 ![image](images/extractJson.gif)
