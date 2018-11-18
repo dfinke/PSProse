@@ -65,11 +65,11 @@ $XAML = @'
 
         <GroupBox Header=" Error Message " Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="3">
             <TextBox x:Name="tbErrorMessage" Margin="3"
+                Foreground = "Red"
                 IsReadOnly="True"
                 FontFamily="Consolas"
                 FontSize="14"/>
         </GroupBox>
-
 
         <GroupBox Header=" Parsed Results " Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="3">
             <TextBox x:Name="tbParsedResults" Margin="3"
@@ -104,13 +104,13 @@ function DoParse {
         }
 
         if ($tbExamples.Text.Length -gt 0) {
-            $constraints = @(($tbExamples.Text -split "`r`n").trim())
+            $constraints = $tbExamples.Text.trim() -split "`r`n"
             $params.Constraints = $constraints
         }
 
         if ($tbHeaders.Text.Length -gt 0) {
             $headers = @()
-            foreach ($record in $tbHeaders.Text -split "`r`n") {
+            foreach ($record in $tbHeaders.Text.trim() -split "`r`n") {
                 $headers += $record
             }
             $params.Header = $headers
@@ -166,7 +166,6 @@ $btnSelectFile.Add_Click( {
     })
 
 $Window.add_ContentRendered( {
-        "donuts"|out-host
         DoParse
     } )
 
