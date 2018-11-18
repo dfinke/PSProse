@@ -28,7 +28,7 @@ $XAML = @'
             <RowDefinition Height="250"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Margin="3">
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="3">
             <Button x:Name="btnSelectFile" Content=" Select File " Margin="3" Width="Auto" HorizontalAlignment="Left"/>
             <Button x:Name="btnCopyPowerShell" Content=" Copy PowerShell To Clipboard" Margin="3" Width="Auto" HorizontalAlignment="Left"/>
         </StackPanel>
@@ -85,24 +85,22 @@ $XAML = @'
 
 function DoParse {
 
-    # $examples = @()
     $headers = @()
-
-    $constraints = $tbExamples.Text -split "`r`n"
-    # foreach ($record in $tbExamples.Text -split "`r`n") {
-    #     $examples += $record
-    # }
+    $constraints = @(($tbExamples.Text -split "`r`n").trim())
 
     foreach ($record in $tbHeaders.Text -split "`r`n") {
         $headers += $record
     }
 
-    # $constraints = [Ordered]@{
-    #     0 = $examples
-    # }
-
     try {
-        $tbParsedResults.Text = Invoke-SplitText -File $targetFile -Constraints $constraints -Header $headers | Format-Table | Out-String
+        $params = @{
+            File                      = $targetFile
+            Constraints               = $constraints
+            Header                    = $headers
+            IncludeDelimitersInOutput = $false
+        }
+
+        $tbParsedResults.Text = Invoke-SplitText @params | Format-Table | Out-String
 
         $tbPowerShell.Text = @"
 `$constraints = $("'{0}'" -f ($constraints -join ", '"))
