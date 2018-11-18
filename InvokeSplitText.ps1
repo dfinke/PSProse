@@ -3,7 +3,8 @@
         [Parameter(Mandatory)]
         $File,
         [string[]]$Header,
-        $Constraints
+        $Constraints,
+        [Switch]$IncludeDelimitersInOutput
     )
 
     function new-splitsession {
@@ -27,7 +28,8 @@
     $textitems | ForEach-Object {$splitsession.inputs.add($_)}
 
     $splitsession.constraints.Clear()
-    $splitsession.constraints.add((New-Object Microsoft.ProgramSynthesis.Split.Text.IncludeDelimitersInOutput $false))
+    # $splitsession.constraints.add((New-Object Microsoft.ProgramSynthesis.Split.Text.IncludeDelimitersInOutput $false))
+    $splitsession.constraints.add((New-Object Microsoft.ProgramSynthesis.Split.Text.IncludeDelimitersInOutput $IncludeDelimitersInOutput))
 
     function Add-ProseConstraint {
         param(
